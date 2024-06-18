@@ -4,44 +4,79 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class UserRegistration {
-    UserRegistration() {
-    }
-    public boolean validateFirstName() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Emter the First_Name");
-        String firstName = sc.nextLine();
-        String regex = "[A-Z][a-z A-Z 0-9]{5,10}";
-        Pattern PT = Pattern.compile(regex);
-        Matcher MT = PT.matcher(firstName);
-        if (MT.matches()) {
-            System.out.println("the firstname is Valid");
-            return true;
-        } else {
-            System.out.println("the firstname is InvalidValid");
-            return false;
+
+public class UserRegistration {
+    public static void firstName(String firstname){
+        Pattern pattern=Pattern.compile("[A-Z][a-z]{3,}");
+        Matcher match= pattern.matcher(firstname);
+        boolean ismatch= match.matches();
+        if(ismatch){
+            System.out.println("Valid input");
+        }else {
+            System.out.println("Inavaid input");
         }
     }
 
-    public boolean validateLastName() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Emter the Last_Name");
-        String lastName = sc.nextLine();
-        String regex = "[A-Z][a-z A-Z 0-9]{3,10}";
-        Pattern PT = Pattern.compile(regex);
-        Matcher MT = PT.matcher(lastName);
-        if (MT.matches()) {
-            System.out.println("the lastname is Valid");
-            return true;
-        } else {
-            System.out.println("the lastname is Invalid");
-            return false;
+    public static void lastName(String lastname){
+        Pattern pattern=Pattern.compile("[A-Z][a-z]{3,}");
+        Matcher match= pattern.matcher(lastname);
+        boolean ismatch= match.matches();
+        if(ismatch){
+            System.out.println("Valid input");
+        }else {
+            System.out.println("Inavaid input");
         }
     }
+
+    public static void emailId(String emailid){
+        Pattern pattern=Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher match= pattern.matcher(emailid);
+        boolean ismatch= match.matches();
+        if(ismatch){
+            System.out.println("Valid input");
+        }else {
+            System.out.println("Inavaid input");
+        }
+    }
+
+    public static void phoneNo(String phoneno){
+        Pattern pattern=Pattern.compile("^[0-9]{2} [0-9]{10}$");
+        Matcher match= pattern.matcher(phoneno);
+        boolean ismatch= match.matches();
+        if(ismatch){
+            System.out.println("Valid input");
+        }else {
+            System.out.println("Invaid input");
+        }
+    }
+
+    public static void Password(String password){
+        Pattern pattern=Pattern.compile("^(?=.*[A-Z]).{8,}$");
+        Matcher match= pattern.matcher(password);
+        boolean ismatch= match.matches();
+        if(ismatch){
+            System.out.println("Valid input");
+        }else {
+            System.out.println("Invaid input");
+        }
+    }
+
     public static void main(String[] args) {
-        UserRegistration UR = new UserRegistration();
-        UR.validateFirstName();
-        UR.validateLastName();
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter the first name: ");
+        String firstname= sc.nextLine();
+        firstName(firstname);
+        System.out.print("Enter the Last name: ");
+        String lastname=sc.nextLine();
+        lastName(lastname);
+        System.out.print("Enter the Email ID : ");
+        String emailid= sc.nextLine();
+        emailId(emailid);
+        System.out.print("Enter the Phone no : ");
+        String phoneno= sc.nextLine();
+        phoneNo(phoneno);
+        System.out.print("Enter the Password : ");
+        String password= sc.nextLine();
+        phoneNo(password);
     }
 }
-
